@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mobile</string>
+    <string name="signin">SIGN IN </string>
+    <string name="signup">SIGN UP</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>">
+    <string name="pass">Password</string>
+    <string name="acc">Don\'t  have an account ? </string>
+    <string name="reg">Register Here</string>
+    <string name="login">LOGIN</string>
+    <string name="bloc">Block Note</string>
+    <string name="todo">To Do List</string>
+    <string name="logout">LOGOUT</string>
+</resources>
