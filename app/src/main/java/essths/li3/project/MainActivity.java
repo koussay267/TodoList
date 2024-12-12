@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         TextView register = findViewById(R.id.registerhere);
         EditText username = findViewById(R.id.user);
         EditText password = findViewById(R.id.password);
+        DBhelper DB = new DBhelper(this);
         Button login = findViewById(R.id.button);
         register.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, register.class);
@@ -33,15 +34,20 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Le champ Username  est vide", Toast.LENGTH_SHORT).show();
             }else if (password.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Le champ Password est vide", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, Home.class);
-                startActivity(intent);
+            }else{
+                Boolean check = DB.check_user(username.getText().toString(), password.getText().toString());
+                if (check == true){
+                    Toast.makeText(MainActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, Home.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(MainActivity.this, "User not found", Toast.LENGTH_LONG).show();
+                    username.setText("");
+                    password.setText("");
+                }
             }
         } );
 
-
-         
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

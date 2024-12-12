@@ -25,6 +25,7 @@ public class register extends AppCompatActivity {
         EditText username = findViewById(R.id.user);
         EditText email = findViewById(R.id.mail);
         EditText password = findViewById(R.id.password);
+        DBhelper DB = new DBhelper(this);
         FloatingActionButton back = findViewById(R.id.backarrow);
         back.setOnClickListener(v -> {
             Intent home = new Intent(register.this, MainActivity.class);
@@ -37,10 +38,15 @@ public class register extends AppCompatActivity {
                 Toast.makeText(this, "Please Enter You Email", Toast.LENGTH_SHORT).show();
             }else if (password.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Please Enter You Password", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(register.this, MainActivity.class);
-                startActivity(home);
+            }else{
+                Boolean check = DB.insert_user(username.getText().toString(), email.getText().toString(), password.getText().toString());
+                if (check){
+                    Toast.makeText(register.this, "inserted", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(register.this, MainActivity.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(register.this, "not inserted", Toast.LENGTH_LONG).show();
+                }
             }
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
