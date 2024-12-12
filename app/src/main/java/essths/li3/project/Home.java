@@ -25,6 +25,10 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(Home.this, todolist.class);
             startActivity(intent);
         });
+        bloc.setOnClickListener(view -> {
+            Intent intent = new Intent(Home.this, blocnote.class);
+            startActivity(intent);
+        });
 
         logout.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, MainActivity.class);

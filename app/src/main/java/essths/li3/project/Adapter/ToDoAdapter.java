@@ -15,6 +15,7 @@ import essths.li3.project.AddTask;
 
 import essths.li3.project.R;
 import essths.li3.project.Utils.DataBaseHelper;
+import essths.li3.project.blocnote;
 import essths.li3.project.model.ToDoModel;
 import essths.li3.project.todolist;
 
@@ -31,6 +32,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         this.myDB = myDB;
 
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

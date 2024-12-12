@@ -46,4 +46,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation (libs.recyclerview.swipedecorator)
+    implementation (libs.cardview)
+
 }
